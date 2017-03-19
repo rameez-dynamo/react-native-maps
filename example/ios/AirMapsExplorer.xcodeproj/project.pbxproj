@@ -19,6 +19,9 @@
 		8490F21A1E887A8F000099F8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8490F2191E887A8F000099F8 /* CFNetwork.framework */; };
 		8490F21C1E887AAC000099F8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8490F21B1E887AAC000099F8 /* Security.framework */; };
 		A622B8115793E41C70169A8B /* libPods-AirMapsExplorer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5044A406006E7C2A53E05C /* libPods-AirMapsExplorer.a */; };
+		FE60C7C11E7F26B300711184 /* AIRMapOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FE60C7BC1E7F26B300711184 /* AIRMapOverlay.m */; };
+		FE60C7C21E7F26B300711184 /* AIRMapOverlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE60C7BE1E7F26B300711184 /* AIRMapOverlayManager.m */; };
+		FE60C7C31E7F26B300711184 /* AIRMapOverlayRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = FE60C7C01E7F26B300711184 /* AIRMapOverlayRenderer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,12 @@
 		8490F21B1E887AAC000099F8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BE5DE1E9AE25978F88CD940A /* Pods-AirMapsExplorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapsExplorer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapsExplorer/Pods-AirMapsExplorer.debug.xcconfig"; sourceTree = "<group>"; };
 		E138AD0CDB08FE57B09B18F8 /* Pods-AirMapsExplorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirMapsExplorer.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirMapsExplorer/Pods-AirMapsExplorer.release.xcconfig"; sourceTree = "<group>"; };
+		FE60C7BB1E7F26B300711184 /* AIRMapOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRMapOverlay.h; sourceTree = "<group>"; };
+		FE60C7BC1E7F26B300711184 /* AIRMapOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRMapOverlay.m; sourceTree = "<group>"; };
+		FE60C7BD1E7F26B300711184 /* AIRMapOverlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRMapOverlayManager.h; sourceTree = "<group>"; };
+		FE60C7BE1E7F26B300711184 /* AIRMapOverlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRMapOverlayManager.m; sourceTree = "<group>"; };
+		FE60C7BF1E7F26B300711184 /* AIRMapOverlayRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRMapOverlayRenderer.h; sourceTree = "<group>"; };
+		FE60C7C01E7F26B300711184 /* AIRMapOverlayRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRMapOverlayRenderer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +127,62 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = AirMapsExplorer;
+			sourceTree = "<group>";
+		};
+		2166AAFA1D82EC56007538D7 /* AirMaps */ = {
+			isa = PBXGroup;
+			children = (
+				FE60C7BB1E7F26B300711184 /* AIRMapOverlay.h */,
+				FE60C7BC1E7F26B300711184 /* AIRMapOverlay.m */,
+				FE60C7BD1E7F26B300711184 /* AIRMapOverlayManager.h */,
+				FE60C7BE1E7F26B300711184 /* AIRMapOverlayManager.m */,
+				FE60C7BF1E7F26B300711184 /* AIRMapOverlayRenderer.h */,
+				FE60C7C01E7F26B300711184 /* AIRMapOverlayRenderer.m */,
+				2166AAFB1D82EC56007538D7 /* AIRMap.h */,
+				2166AAFC1D82EC56007538D7 /* AIRMap.m */,
+				2166AAFD1D82EC56007538D7 /* AIRMapCallout.h */,
+				2166AAFE1D82EC56007538D7 /* AIRMapCallout.m */,
+				2166AAFF1D82EC56007538D7 /* AIRMapCalloutManager.h */,
+				2166AB001D82EC56007538D7 /* AIRMapCalloutManager.m */,
+				2166AB011D82EC56007538D7 /* AIRMapCircle.h */,
+				2166AB021D82EC56007538D7 /* AIRMapCircle.m */,
+				2166AB031D82EC56007538D7 /* AIRMapCircleManager.h */,
+				2166AB041D82EC56007538D7 /* AIRMapCircleManager.m */,
+				2166AB051D82EC56007538D7 /* AIRMapCoordinate.h */,
+				2166AB061D82EC56007538D7 /* AIRMapCoordinate.m */,
+				2166AB071D82EC56007538D7 /* AIRMapManager.h */,
+				2166AB081D82EC56007538D7 /* AIRMapManager.m */,
+				2166AB091D82EC56007538D7 /* AIRMapMarker.h */,
+				2166AB0A1D82EC56007538D7 /* AIRMapMarker.m */,
+				2166AB0B1D82EC56007538D7 /* AIRMapMarkerManager.h */,
+				2166AB0C1D82EC56007538D7 /* AIRMapMarkerManager.m */,
+				2166AB0D1D82EC56007538D7 /* AIRMapPolygon.h */,
+				2166AB0E1D82EC56007538D7 /* AIRMapPolygon.m */,
+				2166AB0F1D82EC56007538D7 /* AIRMapPolygonManager.h */,
+				2166AB101D82EC56007538D7 /* AIRMapPolygonManager.m */,
+				2166AB111D82EC56007538D7 /* AIRMapPolyline.h */,
+				2166AB121D82EC56007538D7 /* AIRMapPolyline.m */,
+				2166AB131D82EC56007538D7 /* AIRMapPolylineManager.h */,
+				2166AB141D82EC56007538D7 /* AIRMapPolylineManager.m */,
+				21D346611D933B8C002BAD8A /* AIRMapUrlTile.h */,
+				21D346621D933B8C002BAD8A /* AIRMapUrlTile.m */,
+				21D346631D933B8C002BAD8A /* AIRMapUrlTileManager.h */,
+				21D346641D933B8C002BAD8A /* AIRMapUrlTileManager.m */,
+				2166AB151D82EC56007538D7 /* Callout */,
+				2166AB271D82EC56007538D7 /* RCTConvert+MoreMapKit.h */,
+				2166AB281D82EC56007538D7 /* RCTConvert+MoreMapKit.m */,
+			);
+			name = AirMaps;
+			path = ../../ios/AirMaps;
+			sourceTree = "<group>";
+		};
+		2166AB151D82EC56007538D7 /* Callout */ = {
+			isa = PBXGroup;
+			children = (
+				2166AB161D82EC56007538D7 /* SMCalloutView.h */,
+				2166AB171D82EC56007538D7 /* SMCalloutView.m */,
+			);
+			path = Callout;
 			sourceTree = "<group>";
 		};
 		2BAA8C4A80B44CFBB3F83458 /* Libraries */ = {
@@ -206,7 +271,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 710;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -328,6 +393,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				FE60C7C11E7F26B300711184 /* AIRMapOverlay.m in Sources */,
+				8620CC891DBD814A00B79BFE /* AIRGoogleMapCallout.m in Sources */,
+				8620CC8D1DBD814A00B79BFE /* AIRGoogleMapMarkerManager.m in Sources */,
+				8620CC881DBD814A00B79BFE /* AIRGoogleMap.m in Sources */,
+				2166AB2D1D82EC56007538D7 /* AIRMapCircleManager.m in Sources */,
+				21D346651D933B8C002BAD8A /* AIRMapUrlTile.m in Sources */,
+				2166AB2A1D82EC56007538D7 /* AIRMapCallout.m in Sources */,
+				8620CC8E1DBD814A00B79BFE /* AIRGoogleMapPolygon.m in Sources */,
+				8620CC8C1DBD814A00B79BFE /* AIRGoogleMapMarker.m in Sources */,
+				8620CC8F1DBD814A00B79BFE /* AIRGoogleMapPolygonManager.m in Sources */,
+				8620CC8A1DBD814A00B79BFE /* AIRGoogleMapCalloutManager.m in Sources */,
+				8620CC8B1DBD814A00B79BFE /* AIRGoogleMapManager.m in Sources */,
+				2166AB2C1D82EC56007538D7 /* AIRMapCircle.m in Sources */,
+				8620CC871DBD814A00B79BFE /* AIRGMSMarker.m in Sources */,
+				21D346661D933B8C002BAD8A /* AIRMapUrlTileManager.m in Sources */,
+				8620CC931DBD814A00B79BFE /* RCTConvert+GMSMapViewType.m in Sources */,
+				2166AB301D82EC56007538D7 /* AIRMapMarker.m in Sources */,
+				8697D6221DBEDE6100DB7D0F /* AIRGoogleMapCircle.m in Sources */,
+				2166AB321D82EC56007538D7 /* AIRMapPolygon.m in Sources */,
+				FE60C7C31E7F26B300711184 /* AIRMapOverlayRenderer.m in Sources */,
+				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				2166AB3E1D82EC56007538D7 /* RCTConvert+MoreMapKit.m in Sources */,
+				8697D6251DBEE22B00DB7D0F /* AIRGoogleMapCircleManager.m in Sources */,
+				FE60C7C21E7F26B300711184 /* AIRMapOverlayManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,8 +543,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -464,6 +555,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -500,8 +592,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -509,6 +603,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
