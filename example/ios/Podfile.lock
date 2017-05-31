@@ -4,76 +4,32 @@ PODS:
   - GoogleMaps/Base (2.1.1)
   - GoogleMaps/Maps (2.1.1):
     - GoogleMaps/Base
-  - React (0.42.3):
-    - React/Core (= 0.42.3)
-  - react-native-google-maps (0.13.1):
+  - React (0.11.0):
+    - React/Core (= 0.11.0)
+  - react-native-google-maps (0.15.3):
     - GoogleMaps (= 2.1.1)
     - React
-  - react-native-maps (0.13.1):
+  - react-native-maps (0.15.3):
     - React
-  - React/Core (0.42.3):
-    - React/cxxreact
-    - Yoga (= 0.42.3.React)
-  - React/cxxreact (0.42.3):
-    - React/jschelpers
-  - React/jschelpers (0.42.3)
-  - React/RCTActionSheet (0.42.3):
-    - React/Core
-  - React/RCTAnimation (0.42.3):
-    - React/Core
-  - React/RCTGeolocation (0.42.3):
-    - React/Core
-  - React/RCTImage (0.42.3):
-    - React/Core
-    - React/RCTNetwork
-  - React/RCTLinkingIOS (0.42.3):
-    - React/Core
-  - React/RCTNetwork (0.42.3):
-    - React/Core
-  - React/RCTSettings (0.42.3):
-    - React/Core
-  - React/RCTText (0.42.3):
-    - React/Core
-  - React/RCTVibration (0.42.3):
-    - React/Core
-  - React/RCTWebSocket (0.42.3):
-    - React/Core
-  - Yoga (0.42.3.React)
+  - React/Core (0.11.0)
 
 DEPENDENCIES:
   - GoogleMaps
   - react-native-google-maps (from `../../`)
   - react-native-maps (from `../../`)
-  - React/Core (from `../../node_modules/react-native`)
-  - React/RCTActionSheet (from `../../node_modules/react-native`)
-  - React/RCTAnimation (from `../../node_modules/react-native`)
-  - React/RCTGeolocation (from `../../node_modules/react-native`)
-  - React/RCTImage (from `../../node_modules/react-native`)
-  - React/RCTLinkingIOS (from `../../node_modules/react-native`)
-  - React/RCTNetwork (from `../../node_modules/react-native`)
-  - React/RCTSettings (from `../../node_modules/react-native`)
-  - React/RCTText (from `../../node_modules/react-native`)
-  - React/RCTVibration (from `../../node_modules/react-native`)
-  - React/RCTWebSocket (from `../../node_modules/react-native`)
-  - Yoga (from `../../node_modules/react-native/ReactCommon/yoga/Yoga.podspec`)
 
 EXTERNAL SOURCES:
-  React:
-    :path: "../../node_modules/react-native"
   react-native-google-maps:
     :path: "../../"
   react-native-maps:
     :path: "../../"
-  Yoga:
-    :path: "../../node_modules/react-native/ReactCommon/yoga/Yoga.podspec"
 
 SPEC CHECKSUMS:
   GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
-  React: 35e039680feacd0563677d49ba410112d2748559
-  react-native-google-maps: b2668747ec289759993dc2411a7078afafa8adea
-  react-native-maps: 326ddbaaea8f6044b1817fb028c40950c71cc38a
-  Yoga: 86ce777665c8259b94ef8dbea76b84634237f4ea
+  React: ab1a2e21deb34965c38328d5ec40cc7d12c6050a
+  react-native-google-maps: f8780ca7802588d0ccd3a83c522a81f433bc1b4a
+  react-native-maps: 6a886202fb8af8568615501c0f9f933ca282a7a3
 
-PODFILE CHECKSUM: 222d08e48f834b6a3de650b72786105af7a9d331
+PODFILE CHECKSUM: 5863a81119f4105f57e305f168afedb3c8c3b51f
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.0.beta.3
