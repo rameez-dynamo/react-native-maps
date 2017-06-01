@@ -293,7 +293,7 @@ public class AirMapManager extends ViewGroupManager<AirMapView> {
 
     void pushEvent(ThemedReactContext context, View view, String name, WritableMap data) {
         context.getJSModule(RCTEventEmitter.class)
-            .receiveEvent(view.getId(), name, data);
+                .receiveEvent(view.getId(), name, data);
     }
 
 

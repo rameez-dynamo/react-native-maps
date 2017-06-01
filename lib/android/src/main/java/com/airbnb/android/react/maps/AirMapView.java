@@ -79,6 +79,7 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
     private final Map<Marker, AirMapMarker> markerMap = new HashMap<>();
     private final Map<Polyline, AirMapPolyline> polylineMap = new HashMap<>();
     private final Map<Polygon, AirMapPolygon> polygonMap = new HashMap<>();
+    private final Map<Polygon, AirMapOverlay> overlayMap = new HashMap<>();
     private final ScaleGestureDetector scaleDetector;
     private final GestureDetectorCompat gestureDetector;
     private final AirMapManager manager;
@@ -90,8 +91,8 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
 
     private static boolean contextHasBug(Context context) {
         return context == null ||
-            context.getResources() == null ||
-            context.getResources().getConfiguration() == null;
+                context.getResources() == null ||
+                context.getResources().getConfiguration() == null;
     }
 
     // We do this to fix this bug:
@@ -139,7 +140,7 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
                         view.startMonitoringRegion();
                         return true; // stop recording this gesture. let mapview handle it.
                     }
-        });
+                });
 
         gestureDetector =
                 new GestureDetectorCompat(reactContext, new GestureDetector.SimpleOnGestureListener() {
@@ -162,7 +163,7 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
 
         this.addOnLayoutChangeListener(new OnLayoutChangeListener() {
             @Override public void onLayoutChange(View v, int left, int top, int right, int bottom,
-                int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                                                 int oldLeft, int oldTop, int oldRight, int oldBottom) {
                 if (!paused) {
                     AirMapView.this.cacheView();
                 }
@@ -204,10 +205,10 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
                 // Return false to open the callout info window and center on the marker
                 // https://developers.google.com/android/reference/com/google/android/gms/maps/GoogleMap.OnMarkerClickListener
                 if (view.moveOnMarkerPress) {
-                  return false;
+                    return false;
                 } else {
-                  marker.showInfoWindow();
-                  return true;
+                    marker.showInfoWindow();
+                    return true;
                 }
             }
         });
@@ -294,36 +295,36 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
         // updating location constantly, killing the battery, even though some other location-mgmt
         // module may
         // desire to shut-down location-services.
-    lifecycleListener = new LifecycleEventListener() {
-        @Override
-        public void onHostResume() {
-          if (hasPermissions()) {
-            //noinspection MissingPermission
-            map.setMyLocationEnabled(showUserLocation);
-          }
-          synchronized (AirMapView.this) {
-            AirMapView.this.onResume();
-            paused = false;
-          }
-        }
-
-        @Override
-        public void onHostPause() {
-          if (hasPermissions()) {
-            //noinspection MissingPermission
-            map.setMyLocationEnabled(false);
-          }
-            synchronized (AirMapView.this) {
-                AirMapView.this.onPause();
-                paused = true;
+        lifecycleListener = new LifecycleEventListener() {
+            @Override
+            public void onHostResume() {
+                if (hasPermissions()) {
+                    //noinspection MissingPermission
+                    map.setMyLocationEnabled(showUserLocation);
+                }
+                synchronized (AirMapView.this) {
+                    AirMapView.this.onResume();
+                    paused = false;
+                }
             }
-        }
 
-        @Override
-        public void onHostDestroy() {
-            AirMapView.this.doDestroy();
-        }
-      };
+            @Override
+            public void onHostPause() {
+                if (hasPermissions()) {
+                    //noinspection MissingPermission
+                    map.setMyLocationEnabled(false);
+                }
+                synchronized (AirMapView.this) {
+                    AirMapView.this.onPause();
+                    paused = true;
+                }
+            }
+
+            @Override
+            public void onHostDestroy() {
+                AirMapView.this.doDestroy();
+            }
+        };
 
         context.addLifecycleEventListener(lifecycleListener);
     }
@@ -488,10 +489,14 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
             AirMapUrlTile urlTileView = (AirMapUrlTile) child;
             urlTileView.addToMap(map);
             features.add(index, urlTileView);
+        } else if (child instanceof AirMapOverlay) {
+            AirMapOverlay airMapOverlay = (AirMapOverlay) child;
+            airMapOverlay.addToMap(map);
+            features.add(index, airMapOverlay);
         } else {
             ViewGroup children = (ViewGroup) child;
             for (int i = 0; i < children.getChildCount(); i++) {
-              addFeature(children.getChildAt(i), index);
+                addFeature(children.getChildAt(i), index);
             }
         }
     }
@@ -717,7 +722,7 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
             LatLngBounds bounds = (region != null) ? region.latLngBounds : null;
 
             if ((bounds != null) &&
-                (lastBoundsEmitted == null || LatLngBoundsUtils.BoundsAreDifferent(bounds, lastBoundsEmitted))) {
+                    (lastBoundsEmitted == null || LatLngBoundsUtils.BoundsAreDifferent(bounds, lastBoundsEmitted))) {
                 LatLng center = map.getCameraPosition().target;
                 lastBoundsEmitted = bounds;
                 eventDispatcher.dispatchEvent(new RegionChangeEvent(getId(), bounds, center, true));
@@ -773,11 +778,11 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
             this.mapLoadingLayout = new RelativeLayout(getContext());
             this.mapLoadingLayout.setBackgroundColor(Color.LTGRAY);
             this.addView(this.mapLoadingLayout,
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT));
+                    new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT));
 
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             params.addRule(RelativeLayout.CENTER_IN_PARENT);
             this.mapLoadingLayout.addView(this.getMapLoadingProgressBar(), params);
 
@@ -791,7 +796,7 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
         if (this.cacheImageView == null) {
             this.cacheImageView = new ImageView(getContext());
             this.addView(this.cacheImageView,
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                    new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             this.cacheImageView.setVisibility(View.INVISIBLE);
         }
         return this.cacheImageView;
