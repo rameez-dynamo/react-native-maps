@@ -1,6 +1,7 @@
 package com.airbnb.android.react.maps;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -42,9 +43,11 @@ public class AirMapOverlay extends AirMapFeature {
 	}
 
 	public void setImage(String uri) {
+		Log.d("Android", "Should set image - " + uri);
 	}
 
 	public void setBounds(LatLngBounds bounds) {
+		Log.d("Android", "Setting bounds - " + bounds.toString());
 		groundOverlayOptions = new GroundOverlayOptions()
 				.positionFromBounds(bounds);
 	}
