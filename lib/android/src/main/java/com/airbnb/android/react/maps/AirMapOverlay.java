@@ -94,6 +94,9 @@ public class AirMapOverlay extends AirMapFeature {
 	}
 
 	private void update() {
+		if (googleMap == null || iconBitmapDescriptor == null || bounds == null) {
+			return;
+		}
 		try {
 			groundOverlayOptions = new GroundOverlayOptions()
 					.image(iconBitmapDescriptor)
@@ -106,14 +109,22 @@ public class AirMapOverlay extends AirMapFeature {
 
 	@Override
 	public void addToMap(GoogleMap map) {
-		this.googleMap = map;
+		try {
+			this.googleMap = map;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		update();
 	}
 
 	@Override
 	public void removeFromMap(GoogleMap map) {
-		groundOverlay.remove();
-		groundOverlay = null;
+		try {
+			groundOverlay.remove();
+			groundOverlay = null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -122,7 +133,6 @@ public class AirMapOverlay extends AirMapFeature {
 	}
 
 	public void setImage(String uri) {
-		Log.d("Overlay", "Should set image - " + uri);
 		if (uri == null) {
 			iconBitmapDescriptor = null;
 			update();
@@ -147,7 +157,6 @@ public class AirMapOverlay extends AirMapFeature {
 	}
 
 	public void setBounds(LatLngBounds bounds) {
-		Log.d("Overlay", "Setting bounds - " + bounds.toString());
 		this.bounds = bounds;
 		update();
 	}
