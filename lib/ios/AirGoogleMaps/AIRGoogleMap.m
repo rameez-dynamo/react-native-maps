@@ -14,6 +14,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <MapKit/MapKit.h>
 #import <React/UIView+React.h>
+#import "AIRGoogleMapOverlay.h"
 #import "RCTConvert+AirMap.h"
 
 id regionAsJSON(MKCoordinateRegion region) {
@@ -46,6 +47,7 @@ id regionAsJSON(MKCoordinateRegion region) {
     _polylines = [NSMutableArray array];
     _circles = [NSMutableArray array];
     _tiles = [NSMutableArray array];
+    _overlays = [NSMutableArray array];
     _initialRegionSet = false;
   }
   return self;
@@ -91,6 +93,10 @@ id regionAsJSON(MKCoordinateRegion region) {
     AIRGoogleMapUrlTile *tile = (AIRGoogleMapUrlTile*)subview;
     tile.tileLayer.map = self;
     [self.tiles addObject:tile];
+  } else if ([subview isKindOfClass:[AIRGoogleMapOverlay class]]) {
+    AIRGoogleMapOverlay *overlay = (AIRGoogleMapOverlay*)subview;
+    overlay.map = self;
+    [self.overlays addObject:overlay];
   } else {
     NSArray<id<RCTComponent>> *childSubviews = [subview reactSubviews];
     for (int i = 0; i < childSubviews.count; i++) {
